@@ -258,6 +258,15 @@ Trainiert wird in drei Varianten:
 (3) auf verrauschten Daten mit überhöhter Trainingsdauer („Overfit“). 
 
 Die Modelle verwenden eine zweischichtige Architektur mit ReLU-Aktivierungen und werden mit Adam optimiert. Eine Besonderheit ist die dynamische, clientseitige Ausführung im Browser mithilfe von TensorFlow.js. Der Trainingsverlauf und die Vorhersagen werden live berechnet, was zu leicht variierenden Ergebnissen bei jedem Laden führt. Dies erlaubt auch interaktive Tests mit veränderten Parametern. Die Ergebnisse werden per Chart.js visualisiert und als Vergleich in übersichtlichen Karten und Tabellen dargestellt. Ziel war neben der funktionalen Umsetzung auch eine klare didaktische Darstellung der Konzepte. Quellen: TensorFlow.js API, Chart.js Dokumentation, Aufgabenstellung.</p>
+
+        <p>Zur Erzeugung des Rauschens wird folgende Funktion verwendet, welche auf der Box-Muller-Transformation basiert und normalverteilte Zufallszahlen mit einer Varianz von 0.05 generiert:</p>
+        <pre><code class="language-javascript">function gaussianNoise(mean = 0, variance = 0.05) {
+  const u1 = Math.random();
+  const u2 = Math.random();
+  const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  return z0 * Math.sqrt(variance) + mean;
+}</code></pre>
+        <p>Die Funktion wird auf die Zielwerte (y) angewendet, um gezielt sogenanntes Label-Rauschen zu simulieren, ohne die Eingabedaten (x) zu beeinflussen.</p>
       </div>
     </div>
   </div>
