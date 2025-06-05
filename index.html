@@ -258,7 +258,14 @@ Auch visuell ist das Overfitting erkennbar: Das Modell ohne Rauschen zeigt glatt
         <p><strong>Technisch:</strong> Verwendet wurden <code>TensorFlow.js</code> zur Erstellung und zum Training des Neuronalen Netzes sowie <code>Chart.js</code> zur Visualisierung der Daten und Vorhersagen. Bootstrap 5 dient als Framework für das responsive Design. Die Anwendung ist vollständig in JavaScript umgesetzt und läuft im Browser. Besonderheiten: Es wurden drei Modelle verwendet (clean, best-fit, overfit), der gesamte Prozess läuft dynamisch und clientseitig ohne Backend.</p>
       </div>
       <div id="fachlich">
-        <p><strong>Fachlich:</strong> Die Aufgabe bestand darin, eine reellwertige Funktion mithilfe eines FFNN zu approximieren. Die Funktion wurde in Trainings- und Testdaten aufgeteilt, mit und ohne Rauschen versehen. Modelle wurden mit unterschiedlicher Epochenzahl trainiert, um Overfitting zu demonstrieren. Die Ergebnisse wurden mittels MSE evaluiert und grafisch dargestellt. Quellen: TensorFlow.js API, Chart.js Dokumentation, Aufgabenstellung.</p>
+        <p><strong>Fachlich:</strong> Die Aufgabe bestand darin, eine reellwertige Funktion mithilfe eines FFNN zu approximieren. Die Funktion wurde dazu als „Ground-Truth“ definiert, jedoch im weiteren Verlauf nur noch indirekt über erzeugte und verrauschte Stichproben simuliert. Für die Umsetzung wurde ein datengesteuerter Ansatz gewählt: Zunächst erfolgt die Zufalls-Erzeugung der Inputdaten (x), anschließend die Berechnung der Zielwerte (y) auf Basis der bekannten Funktion sowie die gezielte Verrauschung der Labels durch normalverteiltes Rauschen mit definierter Varianz. Die Daten werden clientseitig in jeweils Trainings- und Testdaten gesplittet.
+
+Trainiert wird in drei Varianten: 
+(1) auf sauberen Daten,
+(2) auf verrauschten Daten mit begrenzter Epochenzahl („Best-Fit“) sowie 
+(3) auf verrauschten Daten mit überhöhter Trainingsdauer („Overfit“). 
+
+Die Modelle verwenden eine zweischichtige Architektur mit ReLU-Aktivierungen und werden mit Adam optimiert. Eine Besonderheit ist die dynamische, clientseitige Ausführung im Browser mithilfe von TensorFlow.js. Der Trainingsverlauf und die Vorhersagen werden live berechnet, was zu leicht variierenden Ergebnissen bei jedem Laden führt. Dies erlaubt auch interaktive Tests mit veränderten Parametern. Die Ergebnisse werden per Chart.js visualisiert und als Vergleich in übersichtlichen Karten und Tabellen dargestellt. Ziel war neben der funktionalen Umsetzung auch eine klare didaktische Darstellung der Konzepte. Quellen: TensorFlow.js API, Chart.js Dokumentation, Aufgabenstellung.</p>
       </div>
     </div>
   </div>
